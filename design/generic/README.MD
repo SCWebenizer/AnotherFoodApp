@@ -70,7 +70,7 @@ Any classes marked with a '(?)' means that it might not get implemented. It is a
 
 1.There is a class representing the food data, and all of its possible fields.
 It contains:
-    * name, type, brand, quantity, for identification
+    * category name, product name, brand name, amount, for product identification
     * specification whenever it is a simple kind of food, or is a result of cooking or combining other foods
     * the served amount of this food, on average, by itself or as a result of cooking other foods
     * The foods used in preparing this one, and their quantities
@@ -79,10 +79,11 @@ It contains:
     * micronutrient amounts, per 100g (*)
     * timestamp of when it was last eaten or used in a food that was eaten (*)
     * Setters, getters, initialization and delete methods
-    * normal or overriden (language dependent) printing method
-Food can range from the simple raw food, to cooked foods or meals
-- View filtered foods based on nutrition, categories, brands, preparation duration and other things, without expressions
-- Add macronutrients values for simple foods
+    * normal or overriden (language dependent) printing method for different interfaces
+//TODO replace category name, product name, brand name, amount with something more generic... A peach has no brand name, but it has eventually country origin and a certain name
+//The 'category name' field from the identification field sequence is meant to provide a common food category. For example, the category can be ketchup, and the name, brand and quantity will point towards a certain product from the ketchup family.
+//There are different behaviours for raw foods, cooking ingredients and combined foods. Perhaps a separation will be useful, and identify the common fields.
+
 
 2.There is an interface for reading and writing data from an abstract source.
 Several classes implement this interface:
@@ -110,6 +111,7 @@ It contains methods for:
     * returning a new food collection with a maximum count of objects. (*)
 //This probably can be broken into two parts instead.
 //No details on the internal state interactions yet.
+
 
 4.The class implementing the reading and writing interface for the standard interfaces will have several different menus that can be explored. Inputs are awaited, and prints of the current menu are done.
 //One of the menus will actually interact with the food collection wrapper, and display food objects
